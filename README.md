@@ -1,34 +1,80 @@
-# QuickBuy – Node.js E-commerce
+# 🛒 QuickBuy – Simple E-Commerce Store
 
-A simple, full-stack e-commerce demo built with Node.js, Express, MongoDB and EJS templates.
+An end-to-end e‑commerce web application built as part of CodeAlpha’s internship.  
+QuickBuy lets users register/login, browse products by category, manage a shopping cart, and place orders (Cash on Delivery).
 
-### 🔧 Tech Stack
-- **Backend:** Node.js, Express, Mongoose (MongoDB)  
-- **Auth:** Passport.js (local strategy)  
-- **Templating:** EJS  
-- **Sessions:** express-session + connect-mongo  
-- **Styling & UI:** Bootstrap 4  
-- **Forms & Validation:** express-validator + CSRF protection  
+---
 
-### 🚀 Features
-1. **Product Listings**  
-   - CRUD via a minimal admin (removed from prod)  
-   - Browse by category  
-2. **Shopping Cart**  
-   - Add / remove items in session or per-user in DB  
-3. **User Accounts**  
-   - Registration & Login (with validation & flash messages)  
-   - Persists cart across sessions  
-4. **Order Processing**  
-   - “Cash on delivery” checkout  
-   - Stores orders in MongoDB  
-   - Order history in user profile  
+## 📌 Project Overview
 
-### 🔥 Quick Start
+**Tech Stack:**  
+* Node.js & Express.js  
+* EJS templating  
+* MongoDB (via Mongoose)  
+* Bootstrap + custom CSS  
+* Passport.js & express-session  
 
-1. **Clone & Install**
+**Developer:** Honoured OneByte  
+**Duration:** Internship Task 1
 
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/quickbuy.git
-   cd quickbuy
-   npm install
+---
+
+## ✨ Features
+
+* **User Authentication**  
+  * Signup & Signin with flash messages  
+  * Session‑based login  
+
+* **Product Catalog**  
+  * Categorical listings (Electronics, Books, Clothing)  
+  * Home carousel and “Latest Products” slider  
+
+* **Shopping Cart**  
+  * Add/reduce/remove items  
+  * Persist cart in session & DB for logged‑in users  
+
+* **Order Processing**  
+  * Checkout form collects address  
+  * Save order snapshot (COD)  
+  * “My Orders” under user profile  
+
+---
+
+## 🚦 Routes
+
+| Method | Path                 | Description                     |
+| ------ | -------------------- | ------------------------------- |
+| GET    | `/`                  | Homepage with carousel & tiles  |
+| GET    | `/add-to-cart/:id`   | Add product to cart             |
+| GET    | `/shopping-cart`     | View cart                       |
+| GET    | `/checkout`          | Checkout form (login required)  |
+| POST   | `/checkout`          | Place order                     |
+| GET    | `/user/signup`       | Signup form                     |
+| POST   | `/user/signup`       | Handle registration             |
+| GET    | `/user/signin`       | Signin form                     |
+| POST   | `/user/signin`       | Handle login                    |
+| GET    | `/user/profile`      | View past orders                |
+| GET    | `/user/logout`       | Logout                          |
+
+---
+
+## 🛠️ Installation
+
+```bash
+# 1. Clone
+git clone https://github.com/Honoured-1-byte/CodeAlpha_QuickBuy.git
+cd CodeAlpha_QuickBuy
+
+# 2. Install deps
+npm install
+
+# 3. Configure .env
+cp .env.example .env
+# fill DATABASE_URL, SESSION_SECRET, PORT
+
+# 4. Seed DB
+node insertCategories.js
+node insertProducts.js
+
+# 5. Start
+npm start
